@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+</head>
+<body>
+<h1>User Must Register Here! </h1>
+<form action="" method="POST">
+    {% csrf_token %}
+    {{form.username.label}}:
+    {{form.username}}
+
+    {{form.email.label}}:
+    {{form.email}}
+
+    {{form.password1.label}}:
+    {{form.password1}}
+
+    {{form.password2.label}}:
+    {{form.password2}}
+
+    {{form.errors}}
+
+    {% for message in messages %}
+        {{message}}
+    {% endfor %}
+
+    <input type="submit" name="Create User">
+
+</form>
+</body>
+</html>

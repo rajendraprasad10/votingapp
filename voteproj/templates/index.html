@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Data</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+<center>
+<h1>User Data here!</h1>
+   <span> Hello,{{request.user}} </span>
+    <span><a href="{% url 'logout'%}"> Logout </a></span>
+    <h1> all users </h1>
+    {% for vote in vote %}
+        {{vote.user}}
+
+    <form action="{% url 'index' %}" method="POST" >
+        {% csrf_token %}
+    <input type="hidden" name="like_id" value="{{vote.id}}">
+    {% if user not in vote.all %}
+        <button class="ui button positive" type="submit">Not Vote</button>
+    {% else %}
+        <button class="ui button positive" type="submit">Vote</button>
+    </form>
+    {% endif %}
+    {% endfor %}
+</center>
+
+
+
+
+</body>
+</html>
